@@ -24,7 +24,9 @@ func handleSimpleString() {
 		FirstName: "Harry",
 	}
 
-	tmpl.Execute(os.Stdout, templateValues)
+	f, _ := os.Create("example_result-push.txt")
+
+	tmpl.Execute(f, templateValues)
 }
 
 type ExampleHtmlValues struct {
@@ -49,6 +51,7 @@ func handleHtml() {
 
 	tmpl, _ := htmlTmpl.New(templateFile).ParseFiles(templateFile)
 
-	tmpl.Execute(os.Stdout, templateValues)
+	f, _ := os.Create("example_result-email.html")
 
+	tmpl.Execute(f, templateValues)
 }
